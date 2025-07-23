@@ -7,16 +7,20 @@ const cors = require("cors");
 connectDB(); 
 
 const app = express();
-const PORT = process.env.PORT || 5000; 
+const PORT = process.env.PORT || 5000;
+
+// ✅ CORS setup for both localhost (dev) and Netlify (prod)
 app.use(cors({
-  origin: 'http://localhost:3000',
-  credentials: true
+  origin: ['http://localhost:3000', 'https://contactmanager204.netlify.app'],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE']
 }));
+
 app.use(express.json());
 app.use("/api/contacts", require("./routes/contactRoute"));
 app.use("/api/users", require("./routes/userRoute"));
 app.use(errHandler);
 
 app.listen(PORT, () => {
-    console.log(`🚀 Server Running on port ${PORT}`);
+  console.log(`🚀 Server Running on port ${PORT}`);
 });
