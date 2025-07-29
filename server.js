@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 5000;
 
 // ✅ CORS setup for both localhost (dev) and Netlify (prod)
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://contactmanager204.netlify.app'],
+  origin: ['http://localhost:3000', 'https://contactsphere.netlify.app'],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE']
 }));
